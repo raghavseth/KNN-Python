@@ -1,3 +1,7 @@
+####
+Precision is how precise the model is i.e. out of all the predictions of an event being true or 1 , how many of them are actually true
+Recall is the metric to identify that out of all the actual values of event being true or 1, how many was the model able to recall
+
 # Import necessary modules
 from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
