@@ -27,7 +27,8 @@ print("Best score is {}".format(logreg_cv.best_score_))
 #Hyperparameter tuning with RandomizedSearchCV
 GridSearchCV can be computationally expensive, especially if you are searching over a large hyperparameter space and dealing with multiple hyperparameters. 
 A solution to this is to use RandomizedSearchCV, in which not all hyperparameter values are tried out. 
-Instead, a fixed number of hyperparameter settings is sampled from specified probability distributions. 
+Instead, a fixed number of hyperparameter settings is sampled from specified probability distributions.
+Note: RandomizedSearchCV will never outperform GridSearchCV. Instead, it is valuable because it saves on computation time.
 
 # Import necessary modules
 from scipy.stats import randint
