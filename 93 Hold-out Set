@@ -1,0 +1,5 @@
+#Motivation for Hold-out set:
+To be absolutely certain about your model's ability to generalize to unseen data. 
+The idea is to tune the model's hyperparameters on the training set, and then evaluate its performance on the hold-out set which it has never seen before.
+
+#Hold-out set in practice I: Classification
