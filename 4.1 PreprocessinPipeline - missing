@@ -1,0 +1,36 @@
+#Dropping missing data
+#It may be a '9999', other times a 0 - real-world data can be very messy! 
+If you're lucky, the missing values will already be encoded as NaN. 
+We use NaN because it is an efficient and simplified way of internally representing missing data, and it lets us take advantage of pandas methods such as .dropna() and .fillna(), as well as scikit-learn's Imputation transformer Imputer()
+
+# Convert '?' to NaN
+df[df == '?'] = np.nan
+# Print the number of NaNs
+print(df.isnull().sum())
+# Print shape of original DataFrame
+print("Shape of Original DataFrame: {}".format(df.shape))
+# Drop missing values and print shape of new DataFrame
+df = df.dropna()
+# Print shape of new DataFrame
+print("Shape of DataFrame After Dropping All Rows with Missing Values: {}".format(df.shape))
+
+
+#Imputing missing data in a ML Pipeline I
+There are many steps to building a model, from creating training and test sets, to fitting a classifier or regressor, to tuning its parameters, to evaluating its performance on new data. 
+Imputation can be seen as the first step of this machine learning process, the entirety of which can be viewed within the context of a pipeline. 
+Scikit-learn provides a pipeline constructor that allows you to piece together these steps into one process and thereby simplify your workflow.
+# Import the Imputer module
+from sklearn.preprocessing import Imputer
+from sklearn.svm import SVC
+# Setup the Imputation transformer: imp
+imp = Imputer(missing_values='NaN', strategy='most_frequent', axis=0)
+# Instantiate the SVC classifier: clf
+clf = SVC()
+# Setup the pipeline with the required steps: steps
+steps = [('imputation', imp),
+        ('SVM', clf)]
+
+#Imputing missing data in a ML Pipeline II
+Having setup the steps of the pipeline in the previous exercise, you will now use it on the voting dataset to classify a Congressman's party affiliation. 
+What makes pipelines so incredibly useful is the simple interface that they provide. 
+You can use the .fit() and .predict() methods on pipelines just as you did with your classifiers and regressors!
